@@ -1,0 +1,25 @@
+{
+  "name": "polymer",
+  "authors": [
+    "Alex <saniaivanov94@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-badge": "^2.0.0",
+    "paper-button": "^2.0.0",
+    "paper-icon-button": "^2.0.1",
+    "paper-input": "^2.0.2",
+    "iron-icon": "^2.0.1",
+    "iron-icons": "^2.0.1"
+  }
+}

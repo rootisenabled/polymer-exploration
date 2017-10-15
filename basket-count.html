@@ -1,0 +1,48 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+
+
+<dom-module id="basket-count">
+  <template>
+    <section class="shopping-cart">
+      <paper-icon-button icon="shopping-cart" id="product-count">
+      </paper-icon-button>
+      <paper-badge for="product-count" label="[[count]]"></paper-badge>
+    </section>
+  </template>
+
+  <script>
+    class BasketCount extends Polymer.Element {
+      static get is() {
+        return "basket-count";
+      }
+
+      static get properties() {
+        return {
+          count: {
+            type: Number
+          }
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener('increment', e => {
+          this.count++;
+        })
+        window.addEventListener('decrement', e => {
+          if (this.count > 0)
+            this.count--;
+        })
+      }
+    }
+
+    customElements.define(BasketCount.is, BasketCount);
+  </script>
+</dom-module>

@@ -1,0 +1,81 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+
+<dom-module id="my-product">
+  <template>
+    <style>
+       :host {
+        display: block;
+        max-width: 400px;
+      }
+    </style>
+    <style is="custom-style">
+      paper-button.custom {
+        --paper-button-ink-color: var(--paper-pink-a200);
+        --paper-button-raised-keyboard-focus: {
+          background-color: var(--paper-pink-a200) !important;
+          color: white !important;
+        }
+      }
+      paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+    </style>
+    
+    <h2>[[productName]]</h2>
+    <img src="[[imageUrl]]" alt="[[productName]]">
+    <section class="card-actions">
+      <paper-button toggles raised class="custom green" on-click="decrement">-</paper-button>
+      <input id="productCount" type="number" value="0" />
+      <paper-button toggles raised class="custom green" on-click="increment">+</paper-button>
+    </section>
+  </template>
+
+  <script>
+    class MyProduct extends Polymer.Element {
+      static get is() {
+        return "my-product";
+      }
+
+      static get properties() {
+        return {
+          productName: {
+            type: String
+          },
+          imageUrl: {
+            type: String
+          }
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      decrement() {
+        if (this.$.productCount.value > 0) {
+          this.$.productCount.value--;
+          this.dispatchProductCount('decrement');
+        }
+      }
+
+      increment() {
+        this.$.productCount.value++;
+        this.dispatchProductCount('increment');
+      }
+
+      dispatchProductCount(action) {
+        this.dispatchEvent(new CustomEvent(action, {
+          bubbles: true,
+          composed: true,
+          details: {
+            value: this.$.productCount.value
+          }
+        }))
+      }
+    }
+    customElements.define(MyProduct.is, MyProduct);
+  </script>
+</dom-module>

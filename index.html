@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polymer POC</title>
+  <link rel="import" href="/bower_components/polymer/polymer.html">
+  <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="my-product.html">
+  <link rel="import" href="basket-count.html">
+</head>
+
+<body>
+  <header style="display: flex; align-items: center; justify-content: space-around">
+    <h1>Polymer POC</h1>
+    <basket-count count="0"></basket-count>
+  </header>
+  <main style="display: flex; justify-content: space-between">
+    <my-product 
+      product-name="My nice product" 
+      image-url="./assets/product1.jpg">
+    </my-product>
+    <my-product 
+      product-name="My nicer product" 
+      image-url="./assets/product2.jpg">
+  </my-product>
+  </main>
+</body>
+
+</html>
